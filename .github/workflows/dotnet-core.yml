@@ -30,4 +30,4 @@ jobs:
       uses: cschleiden/webdeploy-action@v1
       with:
         webSiteName: 'test-app'
-        package: ${{ format('{0}\dist', runner.workspace) }}
+        package: src\Gldd.PostDredge\bin\Release\netcoreapp3.1
