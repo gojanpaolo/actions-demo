@@ -18,14 +18,14 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
-      run: dotnet restore src/Gldd.PostDredge.sln
+      run: dotnet restore src\Gldd.PostDredge.sln
     - name: Build
-      run: dotnet build src/Gldd.PostDredge.sln --configuration Release --no-restore
+      run: dotnet build src\Gldd.PostDredge.sln --configuration Release --no-restore
     - name: Archive production artifacts
       uses: actions/upload-artifact@v1
       with:
         name: dist
-        path: dist
+        path: src\Gldd.PostDredge\bin\Release\netcoreapp3.1
     - name: GitHub Actions WebDeploy
       uses: cschleiden/webdeploy-action@v1
       with:
