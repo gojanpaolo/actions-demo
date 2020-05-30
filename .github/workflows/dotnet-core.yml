@@ -13,5 +13,5 @@ jobs:
     - uses: gojanpaolo/webdeploy-action@master
       with:
         webSiteName: 'test-app'
-        package: ${{ format('{0}\actions-demo\dist', runner.workspace) }}
+        package: 'dist'
         takeAppOfflineFlag: ${{ true }}
