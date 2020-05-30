@@ -12,7 +12,7 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Build
-      run: dotnet publish src\Gldd.PostDredge.sln --configuration Release -r win-x64
+      run: dotnet publish src -c Release -r win-x64
     - name: GitHub Actions WebDeploy
       uses: cschleiden/webdeploy-action@v1
       with:
