@@ -14,7 +14,7 @@ jobs:
     - name: Build
       run: dotnet publish src -c Release -r win-x64
     - name: GitHub Actions WebDeploy
-      uses: gojanpaolo/webdeploy-action@v1
+      uses: gojanpaolo/webdeploy-action@feature/takeAppOfflineFlag
       with:
         webSiteName: 'test-app'
         package: ${{ format('{0}\actions-demo\src\Gldd.PostDredge\bin\Release\netcoreapp3.1\win-x64\publish', runner.workspace) }}
