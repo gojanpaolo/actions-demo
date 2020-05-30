@@ -13,5 +13,5 @@ jobs:
     - uses: gojanpaolo/webdeploy-action@master
       with:
         webSiteName: 'test-app'
-        package: 'dist'
+        package: ${{ format('{0}\dist', github.workspace) }}
         takeAppOfflineFlag: ${{ true }}
