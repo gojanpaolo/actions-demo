@@ -8,10 +8,10 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.300'
+        dotnet-version: 3.1.300
     - run: dotnet publish src -o dist -c Release -r win-x64
     - uses: gojanpaolo/webdeploy-action@master
       with:
-        webSiteName: 'test-app'
+        webSiteName: test-app
         package: ${{ format('{0}\dist', github.workspace) }}
         takeAppOfflineFlag: true
