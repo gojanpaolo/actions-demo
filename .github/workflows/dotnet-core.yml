@@ -16,5 +16,5 @@ jobs:
     - name: GitHub Actions WebDeploy
       uses: cschleiden/webdeploy-action@v1
       with:
-        webSiteName: 'test-app-2/test'
+        webSiteName: 'test-app'
         package: ${{ format('{0}\actions-demo\src\Gldd.PostDredge\bin\Release\netcoreapp3.1\win-x64\publish', runner.workspace) }}
