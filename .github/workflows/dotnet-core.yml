@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore src\Gldd.PostDredge.sln
     - name: Build
-      run: dotnet build src\Gldd.PostDredge.sln --configuration Release --no-restore
+      run: dotnet publish src\Gldd.PostDredge.sln --configuration Release --no-restore
     - name: Archive production artifacts
       uses: actions/upload-artifact@v1
       with:
