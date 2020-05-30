@@ -9,9 +9,9 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.300'
-    - run: dotnet publish src -c Release -r win-x64
+    - run: dotnet publish src -o dist -c Release -r win-x64
     - uses: gojanpaolo/webdeploy-action@master
       with:
         webSiteName: 'test-app'
-        package: ${{ format('{0}\actions-demo\src\Gldd.PostDredge\bin\Release\netcoreapp3.1\win-x64\publish', runner.workspace) }}
+        package: ${{ format('{0}\actions-demo\dist', runner.workspace) }}
         takeAppOfflineFlag: ${{ true }}
