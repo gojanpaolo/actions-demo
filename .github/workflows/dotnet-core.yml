@@ -3,14 +3,9 @@ name: .NET Core
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
 jobs:
   build:
-
     runs-on: self-hosted
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -18,14 +13,9 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Build
-      run: dotnet publish src\Gldd.PostDredge.sln --configuration Release -r win-x64 -p:PublishSingleFile=true
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: dist
-        path: src\Gldd.PostDredge\bin\Release\netcoreapp3.1
+      run: dotnet publish src\Gldd.PostDredge.sln --configuration Release -r win-x64
     - name: GitHub Actions WebDeploy
       uses: cschleiden/webdeploy-action@v1
       with:
         webSiteName: 'test-app'
-        package: src\Gldd.PostDredge\bin\Release\netcoreapp3.1
+        package: ${{ format('{0}\src\Gldd.PostDredge\bin\Release\netcoreapp3.1', runner.workspace) }}
