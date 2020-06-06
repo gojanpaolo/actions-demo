@@ -6,6 +6,6 @@ namespace Gldd.PostDredge.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        public object Get() => "1";
+        public object Get() => "2";
     }
 }
