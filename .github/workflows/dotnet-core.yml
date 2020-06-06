@@ -14,4 +14,3 @@ jobs:
       with:
         webSiteName: test-app
         package: ${{ format('{0}\dist', github.workspace) }}
-        takeAppOfflineFlag: true
