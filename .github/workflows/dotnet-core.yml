@@ -6,13 +6,15 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.300
-    - run: dotnet publish src -o dist -c Release -r win-x64
-    - uses: gojanpaolo/webdeploy-action@master
-      with:
-        webSiteName: test-app
-        package: ${{ format('{0}\dist', github.workspace) }}
-        removeAdditionalFilesFlag: true
-        takeAppOfflineFlag: true
+    # - uses: actions/setup-dotnet@v1
+    #   with:
+    #     dotnet-version: 3.1.300
+    # - run: dotnet publish src -o dist -c Release -r win-x64
+    # - uses: gojanpaolo/webdeploy-action@master
+    #   with:
+    #     webSiteName: test-app
+    #     package: ${{ format('{0}\dist', github.workspace) }}
+    #     removeAdditionalFilesFlag: true
+    #     takeAppOfflineFlag: true
+    - run: |
+        resgen
