@@ -23,6 +23,4 @@ jobs:
         files: 'src/Gldd.PostDredge/appsettings.json'
       env:
         ConnectionStrings.PostDredge: ${{ secrets.connection_string }}
-    - run: |
-        dotnet tool install --global dotnet-ef
-        dotnet ef database update -p src/Gldd.PostDredge
+    - run: dotnet ef database update -p src/Gldd.PostDredge
