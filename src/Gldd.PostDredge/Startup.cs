@@ -1,5 +1,7 @@
+using Gldd.PostDredge.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,6 +20,7 @@ namespace Gldd.PostDredge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<MyContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PostDredge")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
