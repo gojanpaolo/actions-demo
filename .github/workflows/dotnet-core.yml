@@ -6,9 +6,9 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    # - uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 3.1.300
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
     # - run: dotnet publish src -o dist -c Release -r win-x64
     # - uses: gojanpaolo/webdeploy-action@master
     #   with:
@@ -16,5 +16,11 @@ jobs:
     #     package: ${{ format('{0}\dist', github.workspace) }}
     #     removeAdditionalFilesFlag: true
     #     takeAppOfflineFlag: true
-    - run: |
-        & "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ResGen.exe"
+    # - run: |
+    #     & "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ResGen.exe"
+    - uses: microsoft/variable-substitution@v1
+      with:
+        files: '${{env.DOTNET_ROOT}}/Gldd.PostDredge/appsettings.json'
+      env:
+        ConnectionStrings.PostDredge: ${{ secrets.connection_string }}
+    - run: dotnet ef database update
