@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: echo "client_max_body_size 100M;" > .platform/nginx/conf.d/myconfig.conf
+    - run: echo "client_max_body_size 100M;" > /.platform/nginx/conf.d/myconfig.conf
     # - uses: actions/setup-dotnet@v1
     #   with:
     #     dotnet-version: 3.1.x
