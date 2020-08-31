@@ -3,12 +3,13 @@ on:
     branches: master
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
+    - run: echo "client_max_body_size 100M;" > .platform/nginx/conf.d/myconfig.conf
+    # - uses: actions/setup-dotnet@v1
+    #   with:
+    #     dotnet-version: 3.1.x
     # - run: dotnet publish src -o dist -c Release -r win-x64
     # - uses: gojanpaolo/webdeploy-action@master
     #   with:
@@ -18,11 +19,11 @@ jobs:
     #     takeAppOfflineFlag: true
     # - run: |
     #     & "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ResGen.exe"
-    - uses: microsoft/variable-substitution@v1
-      with:
-        files: 'src/Gldd.PostDredge/appsettings.json'
-      env:
-        ConnectionStrings.PostDredge: ${{ secrets.connection_string }}
-    - run: |
-        dotnet tool install --global dotnet-ef
-        dotnet ef database update -p src/Gldd.PostDredge
+    # - uses: microsoft/variable-substitution@v1
+    #   with:
+    #     files: 'src/Gldd.PostDredge/appsettings.json'
+    #   env:
+    #     ConnectionStrings.PostDredge: ${{ secrets.connection_string }}
+    # - run: |
+    #     dotnet tool install --global dotnet-ef
+    #     dotnet ef database update -p src/Gldd.PostDredge
