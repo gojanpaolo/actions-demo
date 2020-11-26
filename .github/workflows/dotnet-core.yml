@@ -10,11 +10,11 @@ jobs:
     # - run: |
     #     mkdir -p .platform/nginx/conf.d
     #     echo "client_max_body_size 100M;" > .platform/nginx/conf.d/myconfig.conf
-    - run: zip -b src -r src.zip *
-    # - uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 3.1.x
-    # - run: dotnet publish src -o dist -c Release -r win-x64
+    # - run: zip -b src -r src.zip *
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - run: dotnet publish src -o dist -c Release -r win-x64
     # - uses: gojanpaolo/webdeploy-action@master
     #   with:
     #     webSiteName: test-app
