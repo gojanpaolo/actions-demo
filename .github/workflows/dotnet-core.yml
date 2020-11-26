@@ -3,8 +3,7 @@ on:
     branches: master
 jobs:
   build:
-    # runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     # - run: |
@@ -15,6 +14,10 @@ jobs:
       with:
         dotnet-version: 3.1.x
     - run: dotnet publish src -o dist -c Release -r win-x64
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-publish
+        path: publish
     # - uses: gojanpaolo/webdeploy-action@master
     #   with:
     #     webSiteName: test-app
@@ -31,3 +34,10 @@ jobs:
     # - run: |
     #     dotnet tool install --global dotnet-ef
     #     dotnet ef database update -p src/Gldd.PostDredge
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: my-publish
