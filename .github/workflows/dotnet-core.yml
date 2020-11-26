@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     # - run: |
     #     mkdir -p .platform/nginx/conf.d
     #     echo "client_max_body_size 100M;" > .platform/nginx/conf.d/myconfig.conf
@@ -38,7 +38,3 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/download-artifact@v2
-  test:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v1
