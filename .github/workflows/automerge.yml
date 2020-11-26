@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Merge pull requests
-        uses: pascalgn/automerge-action@v0.8.4
+        uses: pascalgn/automerge-action@v0.12.0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_DELETE_BRANCH: true
