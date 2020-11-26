@@ -38,4 +38,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/download-artifact@v2
-
+  test:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
