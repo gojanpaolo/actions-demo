@@ -13,7 +13,7 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
-    - run: dotnet publish src -o dist -c Release -r win-x64
+    - run: dotnet publish src -o publish -c Release -r win-x64
     - uses: actions/upload-artifact@v2
       with:
         name: my-publish
@@ -36,7 +36,7 @@ jobs:
     #     dotnet ef database update -p src/Gldd.PostDredge
   deploy:
     needs: build
-    runs-on: windows-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/download-artifact@v2
       with:
