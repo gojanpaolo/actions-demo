@@ -36,7 +36,7 @@ jobs:
     #     dotnet ef database update -p src/Gldd.PostDredge
   deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: windows-latest
     steps:
     - uses: actions/download-artifact@v2
       with:
