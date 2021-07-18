@@ -10,7 +10,7 @@ jobs:
     #     mkdir -p .platform/nginx/conf.d
     #     echo "client_max_body_size 100M;" > .platform/nginx/conf.d/myconfig.conf
     # - run: zip -b src -r src.zip *
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v1.8.0
       with:
         dotnet-version: 3.1.x
     - run: dotnet publish src -o publish -c Release -r win-x64
